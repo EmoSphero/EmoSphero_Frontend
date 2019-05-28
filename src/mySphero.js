@@ -1,6 +1,7 @@
 const sphero = require("./lib/sphero");
 let newDirection = "?";
 let previousDirection, controller;
+const exports = (module.exports = {});
 
 const LEFT = "LEFT";
 const RIGHT = "RIGHT";
@@ -9,10 +10,10 @@ const DOWN = "DOWN";
 const FORWARD = "FORWARD";
 const BACKWARD = "BACKWARD";
 
-//`ls /dev/tty.Sphero*`
+// `ls /dev/tty.Sphero*`
 const spheroBall = new sphero("/dev/tty.Sphero-PYP-AMP-SPP");
 
-const spheroModule = () => {
+exports.spheroModule = () => {
   console.log("sm");
   initConnections();
 };
@@ -25,7 +26,7 @@ const initConnections = () => {
   });
 };
 
-const pink = () => {
+exports.pink = () => {
   spheroBall.color("ff69b4");
   console.log("Hello Pink");
 };
@@ -37,7 +38,7 @@ const red = () => {
   console.log("Hello Red");
 };
 
-const moveSphero = direction => {
+exports.moveSphero = direction => {
   switch (direction) {
     case LEFT:
       //sphero.roll(speed, heading, state, option). Heading is expressed in degrees.
@@ -77,5 +78,3 @@ const random = () => {
 const stopSphero = spheroBall => {
   spheroBall.roll(0, spheroBall.heading || 0, 0);
 };
-
-module.exports = spheroModule;
