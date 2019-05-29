@@ -31,13 +31,13 @@ export default class EmoSpherO extends React.Component {
     if (curr_state.com === null || curr_state.com === undefined) {
       curr_state.com = result.com;
     }
-    this.setState(curr_state, function() {
-      console.log(this.state);
-    });
     if (curr_state.com !== null && curr_state.com !== undefined) {
       curr_state.com = result.com;
       this.handleSphero();
     }
+    this.setState(curr_state, function() {
+      console.log(this.state);
+    });
   }
 
   handleOpen() {
@@ -72,6 +72,21 @@ export default class EmoSpherO extends React.Component {
     this.refWebSocket.sendMessage(JSON.stringify(msg));
   }
 
+  handleProfile() {
+    let msg = {
+      jsonrpc: "2.0",
+      method: "setupProfile",
+      params: {
+        _auth: this.state.auth,
+        headset: this.state.headset,
+        profile: "EmoSpherO",
+        status: "load"
+      },
+      id: 1
+    };
+    this.refWebSocket.sendMessage(JSON.stringify(msg));
+  }
+
   handleNewSession() {
     let msg = {
       jsonrpc: "2.0",
@@ -102,8 +117,10 @@ export default class EmoSpherO extends React.Component {
   }
 
   handleSphero() {
-    if (this.state.com[0] === "lift" && this.state.com[1] > 0.1) {
+    if (this.state.com[0] === "push" && this.state.com[1] > 0.1) {
       sphero.moveSphero("FORWARD");
+    } else if (this.state.com[0] === "pull" && this.state.com[1] > 0.1) {
+      sphero.moveSphero("BACKWARD");
     }
   }
 
@@ -120,11 +137,15 @@ export default class EmoSpherO extends React.Component {
           <h2>Step 3</h2>
           <Button onClick={() => this.handleAuth()}>Auth</Button>
           <h2>Step 4</h2>
+          <Button onClick={() => this.handleProfile()}>Load Profile</Button>
+          <h2>Step 5</h2>
           <Button onClick={() => this.handleNewSession()}>
             Create Session
           </Button>
-          <h2>Step 5</h2>
+          <h2>Step 6</h2>
           <Button onClick={() => this.handleSubscribe()}>Subscribe</Button>
+          <Button onClick={() => sphero.blue()}>Blue</Button>
+          <Button onClick={() => sphero.green()}>Green</Button>
         </div>
         <Websocket
           url="wss://emotivcortex.com:54321"
