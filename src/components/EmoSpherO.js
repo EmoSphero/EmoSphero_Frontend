@@ -128,24 +128,43 @@ export default class EmoSpherO extends React.Component {
     return (
       <div>
         <div>
+          <ul>
+            <h2>Prerequisites</h2>
+            <h3>Emotiv</h3>
+            <li>Have CortexUI Installed and Running</li>
+            <li>Your Headset Is Paired</li>
+            <h3>Sphero</h3>
+            <li>Have Sphero Connected To Your Computer</li>
+          </ul>
           <h2>Step 1</h2>
-          <Button onClick={() => sphero.spheroModule()}>Activate Lasers</Button>
+          <Button onClick={() => sphero.spheroModule()}>
+            Connect To Sphero
+          </Button>
           <h2>Step 2</h2>
           <Button onClick={() => this.handleHeadset()}>
-            Check Headset Status
+            Check Headset Connection
           </Button>
           <h2>Step 3</h2>
-          <Button onClick={() => this.handleAuth()}>Auth</Button>
+          <Button onClick={() => this.handleAuth()}>
+            Generate Authenticity Token
+          </Button>
           <h2>Step 4</h2>
-          <Button onClick={() => this.handleProfile()}>Load Profile</Button>
+          <Button onClick={() => this.handleProfile()}>
+            Load User Profile
+          </Button>
           <h2>Step 5</h2>
           <Button onClick={() => this.handleNewSession()}>
-            Create Session
+            Create A New Session
           </Button>
           <h2>Step 6</h2>
-          <Button onClick={() => this.handleSubscribe()}>Subscribe</Button>
+          <Button onClick={() => this.handleSubscribe()}>
+            Subscribe To Session
+          </Button>
+          <h2>Change The Color Of Your Sphero</h2>
+          <Button onClick={() => sphero.pink()}>Pink</Button>
           <Button onClick={() => sphero.blue()}>Blue</Button>
           <Button onClick={() => sphero.green()}>Green</Button>
+          <Button onClick={() => sphero.red()}>Red</Button>
         </div>
         <Websocket
           url="wss://emotivcortex.com:54321"
