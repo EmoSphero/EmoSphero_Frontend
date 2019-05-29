@@ -26,6 +26,10 @@ const initConnections = () => {
   });
 };
 
+exports.green = () => {
+  spheroBall.color("#339F13");
+};
+
 exports.pink = () => {
   spheroBall.color("ff69b4");
   console.log("Hello Pink");
