@@ -15,8 +15,8 @@ if (isDevMode) enableLiveReload({ strategy: "react-hmr" });
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600
+    width: 1078,
+    height: 839
   });
 
   // and load the index.html of the app.

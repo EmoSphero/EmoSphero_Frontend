@@ -1,7 +1,7 @@
 import React from "react";
 import EmoSpherO from "./components/EmoSpherO";
 
-import MenuExampleStackable from "./components/Header";
+import MenuExampleStackable from "./components/Header_footer/Header";
 const sphero = require("./mySphero");
 
 export default class App extends React.Component {
