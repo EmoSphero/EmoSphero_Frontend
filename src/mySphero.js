@@ -39,14 +39,18 @@ const initConnections = () => {
   });
 };
 
+exports.green = () => {
+  spheroBall.color("#339F13");
+};
+
 exports.pink = () => {
   spheroBall.color("ff69b4");
   console.log("Hello Pink");
 };
-const blue = () => {
+exports.blue = () => {
   spheroBall.color("blue");
 };
-const red = () => {
+exports.red = () => {
   spheroBall.color("red");
   console.log("Hello Red");
 };
@@ -78,7 +82,7 @@ exports.moveSphero = direction => {
       stopSphero(spheroBall);
   }
 };
-const random = () => {
+exports.random = () => {
   spheroBall.connect(function() {
     // roll orb in a random direction, changing direction every second
     setInterval(function() {
@@ -88,6 +92,6 @@ const random = () => {
   });
 };
 
-const stopSphero = spheroBall => {
+exports.stopSphero = spheroBall => {
   spheroBall.roll(0, spheroBall.heading || 0, 0);
 };
