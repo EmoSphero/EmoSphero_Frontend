@@ -14,14 +14,15 @@ const BACKWARD = "BACKWARD";
 // `ls /dev/tty.Sphero*`
 // const spheroBall = new sphero("/dev/tty.Sphero-PYP-AMP-SPP");
 // MSB FIXME : probably want to remove a lot of this logging...
-const spheroBall = find_sphero.find_serialport().then(
+let spheroBall;
+find_sphero.find_serialport().then(
   port => {
-    console.log(typeof port);
+    console.log(port);
     if (port.length === 0) {
       console.log("No serial ports found??");
     } else {
       console.log("Found sphero on {port.0}");
-      new sphero(port[0]);
+      spheroBall = new sphero(port);
     }
   },
   err => {

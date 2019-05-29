@@ -1,10 +1,13 @@
-'use babel';
+"use babel";
 
-const SerialPort = require('serialport');
+const SerialPort = require("serialport");
 
 exports.find_serialport = function() {
-    return SerialPort.list().then(
-        ports => {return ports.filter(port => port.isOpen);},
-        err => console.log(err)
-    );
+  return SerialPort.list().then(
+    ports => {
+      return ports.filter(port => port.comName.includes("Sphero")).pop()
+        .comName;
+    },
+    err => console.log(err)
+  );
 };
