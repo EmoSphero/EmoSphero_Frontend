@@ -1,4 +1,5 @@
 const sphero = require("./lib/sphero");
+const find_sphero = require("./find_sphero");
 let newDirection = "?";
 let previousDirection, controller;
 const exports = (module.exports = {});
@@ -11,7 +12,19 @@ const FORWARD = "FORWARD";
 const BACKWARD = "BACKWARD";
 
 // `ls /dev/tty.Sphero*`
-const spheroBall = new sphero("/dev/tty.Sphero-PYP-AMP-SPP");
+// const spheroBall = new sphero("/dev/tty.Sphero-PYP-AMP-SPP");
+// MSB FIXME : probably want to remove a lot of this logging...
+const spheroBall = find_sphero.find_serialport().then( (port) => {
+  console.log(typeof(port));
+  if(port.length === 0) {
+    console.log("No serial ports found??");
+  } else {
+    console.log("Found sphero on {port.0}");
+    new sphero(port[0]);
+  }
+}, (err) => {
+  console.log("Problem finding sphero??");
+});
 
 exports.spheroModule = () => {
   console.log("sm");
