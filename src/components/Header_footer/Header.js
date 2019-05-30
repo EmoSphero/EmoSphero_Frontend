@@ -9,7 +9,7 @@ export default class Header extends Component {
         style={{
           backgroundColor: "#293042",
           boxShadow: "none",
-          padding: "10px 0"
+          padding: "10px 0 0"
         }}
       >
         <Toolbar style={{ display: "flex" }}>

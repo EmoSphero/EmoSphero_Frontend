@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Banner from "./banner";
+import Banner from "./Banner";
 
 export default class Homepage extends Component {
   render() {

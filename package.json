@@ -12,7 +12,6 @@
     "lint": "eslint --cache --color --ext .jsx,.js src"
   },
   "keywords": [],
-  "author": "dante",
   "license": "MIT",
   "config": {
     "forge": {

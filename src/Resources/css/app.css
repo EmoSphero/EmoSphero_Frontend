@@ -9,3 +9,10 @@
   width: 1024px;
   margin: 0 auto;
 }
+h2 {
+  position: relative;
+  font-family: "Righteous", cursive;
+  color: "blue";
+}
+.img_cover {
+  background-size: cover !important;
