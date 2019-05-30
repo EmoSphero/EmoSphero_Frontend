@@ -1,49 +1,24 @@
 import React, { Component } from "react";
-import { Menu } from "semantic-ui-react";
+import { AppBar, Toolbar } from "@material-ui/core";
 
-export default class MenuExampleStackable extends Component {
-  constructor() {
-    super();
-
-    this.state = {};
-  }
-  handleItemClick(e, { name }) {
-    this.setState({ activeItem: name });
-  }
-
+export default class Header extends Component {
   render() {
-    const { activeItem } = this.state;
-
     return (
-      <Menu stackable color="red">
-        <Menu.Item>
-          <img src="/logo.png" />
-        </Menu.Item>
-
-        <Menu.Item
-          name="features"
-          active={activeItem === "features"}
-          onClick={() => this.handleItemClick}
-        >
-          Features
-        </Menu.Item>
-
-        <Menu.Item
-          name="testimonials"
-          active={activeItem === "testimonials"}
-          onClick={() => this.handleItemClick}
-        >
-          Testimonials
-        </Menu.Item>
-
-        <Menu.Item
-          name="sign-in"
-          active={activeItem === "sign-in"}
-          onClick={() => this.handleItemClick}
-        >
-          Sign-in
-        </Menu.Item>
-      </Menu>
+      <AppBar
+        position="fixed"
+        style={{
+          backgroundColor: "#293042",
+          boxShadow: "none",
+          padding: "10px 0"
+        }}
+      >
+        <Toolbar style={{ display: "flex" }}>
+          <div style={{ flexGrow: 1 }}>
+            <div />
+            EmoSpherO
+          </div>
+        </Toolbar>
+      </AppBar>
     );
   }
 }

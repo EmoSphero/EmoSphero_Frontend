@@ -1,14 +1,19 @@
 import React from "react";
 import EmoSpherO from "./components/EmoSpherO";
-
-import MenuExampleStackable from "./components/Header_footer/Header";
+import Header from "./components/Header_footer/Header";
+import Homepage from "./components/Hero_banner";
 const sphero = require("./mySphero");
 
 export default class App extends React.Component {
   render() {
     return (
-      <div>
-        <MenuExampleStackable />
+      <div
+        style={{
+          backgroundColor: "#293042"
+        }}
+      >
+        <Header />
+        <Homepage />
 
         <h1>Welcome to EmoSpherO</h1>
         <EmoSpherO />
