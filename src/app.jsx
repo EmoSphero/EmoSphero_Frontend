@@ -13,9 +13,9 @@ export default class App extends React.Component {
         }}
       >
         <Header />
-        <Homepage />
 
         <h1>Welcome to EmoSpherO</h1>
+        <Homepage />
         <EmoSpherO />
       </div>
     );
