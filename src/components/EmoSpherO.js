@@ -40,9 +40,7 @@ export default class EmoSpherO extends React.Component {
     });
   }
 
-  handleOpen() {
-    alert("connected");
-  }
+  handleOpen() {}
 
   handleHeadset() {
     let msg = {

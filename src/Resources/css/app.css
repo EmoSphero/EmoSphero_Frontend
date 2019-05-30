@@ -16,3 +16,8 @@ h2 {
 }
 .img_cover {
   background-size: cover !important;
+}
+
+.red {
+  color: red;
+}
