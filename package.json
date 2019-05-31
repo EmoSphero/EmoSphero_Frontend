@@ -12,7 +12,6 @@
     "lint": "eslint --cache --color --ext .jsx,.js src"
   },
   "keywords": [],
-  "author": "dante",
   "license": "MIT",
   "config": {
     "forge": {
@@ -47,6 +46,7 @@
     }
   },
   "dependencies": {
+    "@material-ui/core": "^4.0.1",
     "electron-compile": "^6.4.4",
     "electron-devtools-installer": "^2.1.0",
     "electron-squirrel-startup": "^1.0.0",
