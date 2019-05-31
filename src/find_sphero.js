@@ -1,5 +1,3 @@
-"use babel";
-
 const SerialPort = require("serialport");
 
 exports.find_serialport = function() {
