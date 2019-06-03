@@ -10,7 +10,8 @@ export default class EmoSpherO extends React.Component {
       auth: "",
       headset: "",
       headsetStatus: "",
-      com: null
+      com: null,
+      count: 0
     };
     this.handleData = this.handleData.bind(this);
   }
@@ -21,9 +22,6 @@ export default class EmoSpherO extends React.Component {
     if (curr_state.headsetStatus === "") {
       curr_state.headset = result.result[0].id;
       curr_state.headsetStatus = result.result[0].status;
-      if (curr_state.headsetStatus === "connected") {
-        alert("Headset is Connected!");
-      }
     }
     if (curr_state.auth === "" || curr_state.auth === undefined) {
       curr_state.auth = result.result._auth;
@@ -35,12 +33,13 @@ export default class EmoSpherO extends React.Component {
       curr_state.com = result.com;
       this.handleSphero();
     }
-    this.setState(curr_state, function() {
-      console.log(this.state);
-    });
+    this.setState({ curr_state }, () => console.log(this.state));
+    console.log(result);
   }
 
-  handleOpen() {}
+  handleOpen() {
+    console.log("connected");
+  }
 
   handleHeadset() {
     let msg = {
@@ -51,7 +50,6 @@ export default class EmoSpherO extends React.Component {
       },
       id: 1
     };
-
     this.refWebSocket.sendMessage(JSON.stringify(msg));
   }
 
@@ -66,7 +64,6 @@ export default class EmoSpherO extends React.Component {
       },
       id: 1
     };
-
     this.refWebSocket.sendMessage(JSON.stringify(msg));
   }
 
@@ -117,9 +114,39 @@ export default class EmoSpherO extends React.Component {
   handleSphero() {
     if (this.state.com[0] === "push" && this.state.com[1] > 0.1) {
       sphero.moveSphero("FORWARD");
+      this.handleIncrement();
     } else if (this.state.com[0] === "pull" && this.state.com[1] > 0.1) {
       sphero.moveSphero("BACKWARD");
     }
+  }
+
+  handleIncrement() {
+    let curr_state = this.state;
+    curr_state.count += 1;
+    this.setState({ curr_state });
+    console.log(this.state);
+  }
+
+  handleGo() {
+    let that = this;
+    setTimeout(function() {
+      sphero.spheroModule();
+      setTimeout(function() {
+        that.handleHeadset();
+        setTimeout(function() {
+          that.handleAuth();
+          setTimeout(function() {
+            that.handleProfile();
+            setTimeout(function() {
+              that.handleNewSession();
+              setTimeout(function() {
+                that.handleSubscribe();
+              }, 2000);
+            }, 2000);
+          }, 2000);
+        }, 2000);
+      }, 2500);
+    }, 500);
   }
 
   render() {
@@ -134,30 +161,7 @@ export default class EmoSpherO extends React.Component {
             <h3>Sphero</h3>
             <li>Have Sphero Connected To Your Computer</li>
           </ul>
-          <h2>Step 1</h2>
-          <Button onClick={() => sphero.spheroModule()}>
-            Connect To Sphero
-          </Button>
-          <h2>Step 2</h2>
-          <Button onClick={() => this.handleHeadset()}>
-            Check Headset Connection
-          </Button>
-          <h2>Step 3</h2>
-          <Button onClick={() => this.handleAuth()}>
-            Generate Authenticity Token
-          </Button>
-          <h2>Step 4</h2>
-          <Button onClick={() => this.handleProfile()}>
-            Load User Profile
-          </Button>
-          <h2>Step 5</h2>
-          <Button onClick={() => this.handleNewSession()}>
-            Create A New Session
-          </Button>
-          <h2>Step 6</h2>
-          <Button onClick={() => this.handleSubscribe()}>
-            Subscribe To Session
-          </Button>
+          <Button onClick={() => this.handleGo()}>Let's Roll</Button>
           <h2>Change The Color Of Your Sphero</h2>
           <Button onClick={() => sphero.pink()}>Pink</Button>
           <Button onClick={() => sphero.blue()}>Blue</Button>

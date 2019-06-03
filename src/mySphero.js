@@ -32,13 +32,13 @@ find_sphero.find_serialport().then(
 
 exports.spheroModule = () => {
   console.log("sm");
-  initConnections();
+  return initConnections();
 };
 
 const initConnections = () => {
   console.log("Waiting for Sphero connection...");
 
-  spheroBall.connect(() => {
+  return spheroBall.connect(() => {
     console.log("Connected to Sphero");
   });
 };
