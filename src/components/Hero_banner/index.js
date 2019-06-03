@@ -4,7 +4,7 @@ import Banner from "./Banner";
 export default class Homepage extends Component {
   render() {
     return (
-      <div className="wrapper">
+      <div>
         <Banner />
       </div>
     );
