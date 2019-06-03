@@ -18,6 +18,15 @@ h2 {
   background-size: cover !important;
 }
 
-.red {
-  color: red;
+.banner_wrapper {
+  margin: 0 auto;
+  width: 1280px;
+  margin-top: 90px;
+  height: 800px;
+  overflow: hidden;
+}
+.stack_wrapper {
+  background: #1294f6;
+  margin-top: 9px;
+  padding: 50px 0px;
 }

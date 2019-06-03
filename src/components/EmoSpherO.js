@@ -124,7 +124,7 @@ export default class EmoSpherO extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="banner_wrapper">
         <div>
           <ul>
             <h2>Prerequisites</h2>

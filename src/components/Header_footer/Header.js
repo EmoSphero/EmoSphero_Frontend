@@ -7,9 +7,10 @@ export default class Header extends Component {
       <AppBar
         position="fixed"
         style={{
-          backgroundColor: "#293042",
+          backgroundColor: "#fc1f6c",
           boxShadow: "none",
-          padding: "10px 0 0"
+          padding: "10px 0",
+          borderBottom: "4px solid #fff"
         }}
       >
         <Toolbar style={{ display: "flex" }}>
