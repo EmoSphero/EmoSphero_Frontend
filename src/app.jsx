@@ -35,7 +35,8 @@ export default class App extends React.Component {
     console.log(user);
     axios
       .post(
-        "http://127.0.0.1:8000/api/rest-auth/registration/",
+        //"http://127.0.0.1:8000/api/rest-auth/registration/",
+        "http://localhost:8000/api/user",
         { user },
         { headers: { "Content-Type": "application/json" } }
       )
