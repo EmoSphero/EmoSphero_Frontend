@@ -10,7 +10,18 @@ const StackHome = () => {
         borderTop: "4px solid #fff"
       }}
     >
-      <div className="container">YO YOYO YO YO</div>
+      <div
+        style={{
+          fontFamily: "Roboto",
+          color: "white",
+          fontSize: "30px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        Stacked Used
+      </div>
     </div>
   );
 };

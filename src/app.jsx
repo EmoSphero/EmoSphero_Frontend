@@ -1,5 +1,4 @@
 import React from "react";
-
 import SidebarExampleMultiple from "./components/misc/Sidebar";
 const sphero = require("./mySphero");
 
