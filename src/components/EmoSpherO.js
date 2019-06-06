@@ -11,7 +11,9 @@ export default class EmoSpherO extends React.Component {
       headset: "",
       headsetStatus: "",
       com: null,
-      count: 0
+      count_com: 0,
+      com_mag: 0,
+      avg_com_mag: 0
     };
     this.handleData = this.handleData.bind(this);
   }
@@ -112,7 +114,7 @@ export default class EmoSpherO extends React.Component {
   }
 
   handleSphero() {
-    if (this.state.com[0] === "push" && this.state.com[1] > 0.1) {
+    if (this.state.com[0] === "lift" && this.state.com[1] > 0.1) {
       sphero.moveSphero("FORWARD");
       this.handleIncrement();
     } else if (this.state.com[0] === "pull" && this.state.com[1] > 0.1) {
@@ -122,7 +124,9 @@ export default class EmoSpherO extends React.Component {
 
   handleIncrement() {
     let curr_state = this.state;
-    curr_state.count += 1;
+    curr_state.count_com += 1;
+    curr_state.com_mag += this.state.com[1];
+    curr_state.avg_com_mag = curr_state.count_com / curr_state.com_mag;
     this.setState({ curr_state });
     console.log(this.state);
   }
@@ -154,6 +158,8 @@ export default class EmoSpherO extends React.Component {
       <div>
         <div>
           <ul>
+            <li>Total amount of commands: {this.state.count_com}</li>
+            <li>Average command magnitude: {this.state.avg_com_mag}</li>
             <h2>Prerequisites</h2>
             <h3>Emotiv</h3>
             <li>Have CortexUI Installed and Running</li>
