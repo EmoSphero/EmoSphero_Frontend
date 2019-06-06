@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { AppBar, Toolbar } from "@material-ui/core";
 
-export default class Header extends Component {
+export default class Header1 extends Component {
   render() {
     return (
       <AppBar

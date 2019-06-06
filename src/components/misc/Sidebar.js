@@ -8,22 +8,29 @@ import {
   Segment,
   Sidebar
 } from "semantic-ui-react";
+import Homepage from "../Hero_banner";
+import StackHome from "../Stack_banner";
+import EmoSpherO from "../EmoSpherO";
+import Footer from "../Header_footer/Footer";
+import Header1 from "../Header_footer/Header";
 
-export default class SidebarExampleDimmed extends Component {
+export default class SidebarExampleMultiple extends Component {
   constructor() {
     super();
-
     this.state = { visible: false };
+    this.handleHideClick = this.handleHideClick.bind(this);
+    this.handleShowClick = this.handleShowClick.bind(this);
+    this.handleSidebarHide = this.handleSidebarHide.bind(this);
   }
+
   handleHideClick() {
     this.setState({ visible: false });
   }
-
   handleShowClick() {
     this.setState({ visible: true });
   }
   handleSidebarHide() {
-    this.setState({ visible: false });
+    this.setState({ visible: true });
   }
 
   render() {
@@ -31,30 +38,21 @@ export default class SidebarExampleDimmed extends Component {
 
     return (
       <div>
-        <Button.Group>
-          <Button disabled={visible} onClick={() => this.handleShowClick()}>
-            Show sidebar
-          </Button>
-          <Button disabled={!visible} onClick={() => this.handleHideClick()}>
-            Hide sidebar
-          </Button>
-        </Button.Group>
-
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}
-            animation="overlay"
+            animation="push"
+            direction="left"
             icon="labeled"
             inverted
-            onHide={() => this.handleSidebarHide()}
+            onHide={this.handleSidebarHide}
             vertical
             visible={visible}
-            width=" wide"
+            width="thin"
           >
             <Menu.Item as="a">
               <Icon name="home" />
-              Homekwjehraksdjfhdkfjhsdkja hadskjfahsfj adhsfk jdsjfdsf adhfa
-              jkdsfhfhadsjkf hasdkjf hdsfkj a
+              Home
             </Menu.Item>
             <Menu.Item as="a">
               <Icon name="gamepad" />
@@ -66,10 +64,68 @@ export default class SidebarExampleDimmed extends Component {
             </Menu.Item>
           </Sidebar>
 
-          <Sidebar.Pusher dimmed={visible}>
-            <Segment basic>
-              <Header as="h3">Application Content</Header>
-              <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+          <Sidebar
+            as={Menu}
+            animation="push"
+            direction="right"
+            inverted
+            vertical
+            visible={visible}
+          >
+            <Menu.Item as="a" header>
+              Change The Color of Your
+            </Menu.Item>
+            <Menu.Item>
+              <Button onClick={() => sphero.pink()}>Pink</Button>
+            </Menu.Item>
+
+            <Menu.Item>
+              <Button onClick={() => sphero.blue()}>Blue</Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button onClick={() => sphero.green()}>Green</Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button inverted color="red" onClick={() => sphero.red()}>
+                Red
+              </Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button
+                inverted
+                color="red"
+                circular
+                onClick={() => sphero.red()}
+              >
+                Red
+              </Button>
+            </Menu.Item>
+          </Sidebar>
+
+          <Sidebar.Pusher>
+            <Segment
+              style={{
+                backgroundColor: "#293042"
+              }}
+            >
+              <Button.Group>
+                <Button
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    right: 0
+                  }}
+                  disabled={visible}
+                  onClick={this.handleShowClick}
+                >
+                  Connect
+                </Button>
+              </Button.Group>
+              <Header1 />
+              <Homepage />
+              <StackHome />
+              <EmoSpherO />
+              <Footer />
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
