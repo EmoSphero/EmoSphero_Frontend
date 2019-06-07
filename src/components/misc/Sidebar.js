@@ -184,7 +184,7 @@ export default class SidebarExampleMultiple extends Component {
     const { visible } = this.state;
 
     return (
-      <div>
+      <div clasName="featured_wrapper">
         <Sidebar.Pushable as={Segment}>
           <Sidebar
             as={Menu}

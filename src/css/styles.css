@@ -1,12 +1,13 @@
-body {
+.featured_wrapper {
+  margin: 0 auto;
+  width: 1440px;
+  margin-top: 90px;
+  height: 730px;
+  overflow: hidden;
   background-image: url("../background.png");
-  background-color: red;
 }
-div.background {
-  background-image: url("../background.png");
-  background-color: #FFF;
-}
-div.fixMyStyle {
-  background-image: url("../background.png");
-  background-color: #FFF;
+.stack_wrapper {
+  margin-top: 9px;
+  padding: 50px 0px;
+  background-image: url("../css/images/purple-turquoise-blue-wallpapers-25282-6480975.svg");
 }
