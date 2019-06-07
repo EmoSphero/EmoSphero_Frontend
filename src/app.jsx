@@ -11,31 +11,20 @@ export default class App extends React.Component {
     super();
     this.state = {
       username: "",
-      email: "haha@lol.com",
-      password1: "",
-      password2: ""
+      user_id: 1,
+      score: 100
     };
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   handleUsernameChange(event) {
     this.setState({ username: event.target.value });
   }
 
-  handlePasswordChange(event) {
-    this.setState({
-      password1: event.target.value,
-      password2: event.target.value
-    });
-  }
-
-  handleSubmit() {
-    const user = JSON.stringify(this.state);
-    console.log(user);
+  handleUserSubmit() {
+    const user = JSON.stringify(this.state.username);
     axios
       .post(
-        //"http://127.0.0.1:8000/api/rest-auth/registration/",
         "http://localhost:8000/api/user",
         { user },
         { headers: { "Content-Type": "application/json" } }
@@ -48,6 +37,37 @@ export default class App extends React.Component {
           console.log("Got error" + e);
         }
       );
+  }
+
+  handleScoreSubmit() {
+    const score = JSON.stringify(this.state.score);
+    const user_id = JSON.stringify(this.state.user_id);
+    axios
+      .post(
+        "http://localhost:8000/api/score",
+        { user_id, score },
+        { headers: { "Content-Type": "application/json" } }
+      )
+      .then(
+        r => {
+          console.log(r);
+        },
+        e => {
+          console.log("Got error" + e);
+        }
+      );
+  }
+
+  handleScoreGet() {
+    axios.get("http://localhost:8000/api/scores/").then(r => {
+      console.log(r);
+    });
+  }
+
+  handleUserGet() {
+    axios.get("http://localhost:8000/api/users/").then(r => {
+      console.log(r);
+    });
   }
 
   render() {
@@ -63,17 +83,11 @@ export default class App extends React.Component {
               onChange={this.handleUsernameChange}
             />
           </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input
-              placeholder="Enter Your Password"
-              onChange={this.handlePasswordChange}
-            />
-          </Form.Field>
-          <Button type="submit" onClick={() => this.handleSubmit()}>
+          <Button type="submit" onClick={() => this.handleUserSubmit()}>
             Submit
           </Button>
         </Form>
+        <Button onClick={() => this.handleScoreGet()}>Submit Score</Button>
       </div>
     );
   }
