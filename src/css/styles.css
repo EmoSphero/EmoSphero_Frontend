@@ -4,10 +4,50 @@
   margin-top: 90px;
   height: 730px;
   overflow: hidden;
-  background-image: url("../background.png");
+  background-image: url("../css//images/featured.png");
 }
 .stack_wrapper {
   margin-top: 9px;
   padding: 50px 0px;
   background-image: url("../css/images/purple-turquoise-blue-wallpapers-25282-6480975.svg");
+}
+
+.devicon-html5-plain-wordmark {
+  font-size: 10rem;
+  color: #212b31;
+}
+
+.devicon-css3-plain-wordmark {
+  font-size: 10rem;
+  color: #212b31;
+}
+
+.devicon-javascript-plain {
+  font-size: 10rem;
+  color: #212b31;
+}
+
+.devicon-nodejs-plain {
+  font-size: 10rem;
+  color: #212b31;
+}
+
+.devicon-python-plain {
+  font-size: 10rem;
+  color: #212b31;
+}
+
+.devicon-mongodb-plain {
+  font-size: 10rem;
+  color: #212b31;
+}
+
+.devicon-atom-original {
+  font-size: 10rem;
+  color: #212b31;
+}
+
+.devicon-react-original-wordmark {
+  font-size: 10rem;
+  color: #212b31;
 }

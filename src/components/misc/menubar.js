@@ -1,6 +1,9 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import {
   Button,
+  Checkbox,
+  Grid,
   Header,
   Icon,
   Image,
@@ -8,43 +11,20 @@ import {
   Segment,
   Sidebar
 } from "semantic-ui-react";
-import Homepage from "../Hero_banner";
-import StackHome from "../Stack_banner";
-import Footer from "../Header_footer/Footer";
-import Header1 from "../Header_footer/Header";
 import Websocket from "react-websocket";
 const sphero = require("../../mySphero");
 
-export default class SidebarExampleMultiple extends Component {
+export default class Menubar extends Component {
   constructor() {
     super();
     this.state = {
       visible: false,
-      auth: "",
-      headset: "",
-      headsetStatus: "",
-      com: null,
-      count: 0
+      dimmed: false,
+      animation: ""
     };
-
     this.handleHideClick = this.handleHideClick.bind(this);
-    this.handleShowClick = this.handleShowClick.bind(this);
-    this.handleSidebarHide = this.handleSidebarHide.bind(this);
-    this.handleSidebarHide1 = this.handleSidebarHide1.bind(this);
     this.handleData = this.handleData.bind(this);
-  }
-
-  handleHideClick() {
-    this.setState({ visible: true });
-  }
-  handleShowClick() {
-    this.setState({ visible: true });
-  }
-  handleSidebarHide() {
-    this.setState({ visible: true });
-  }
-  handleSidebarHide1() {
-    this.setState({ visible: false });
+    this.handleSidebarHide = this.handleSidebarHide.bind(this);
   }
   handleData(data) {
     let result = JSON.parse(data);
@@ -157,6 +137,12 @@ export default class SidebarExampleMultiple extends Component {
     console.log(this.state);
   }
 
+  handleHideClick() {
+    this.setState({ visible: true, dimmed: true });
+  }
+  handleSidebarHide() {
+    this.setState({ visible: false });
+  }
   handleGo() {
     let that = this;
     setTimeout(function() {
@@ -181,92 +167,49 @@ export default class SidebarExampleMultiple extends Component {
   }
 
   render() {
-    const { visible } = this.state;
-
     return (
-      <div clasName="featured_wrapper">
-        <Sidebar.Pushable as={Segment}>
-          <Sidebar
-            as={Menu}
-            animation="push"
-            direction="left"
-            icon="labeled"
-            inverted
-            vertical
-            visible={visible}
-            width="thin"
-          >
-            <Menu.Item as="a">
-              <Icon name="game" onClick={() => this.handleGo()} />
-              Start EmoSpherO
-            </Menu.Item>
-          </Sidebar>
-
-          <Sidebar
-            as={Menu}
-            animation="push"
-            direction="right"
-            inverted
-            vertical
-            visible={visible}
-          >
-            <Menu.Item as="a" header>
-              Change The Color of Your
-            </Menu.Item>
-            <Menu.Item>
-              <Button onClick={() => sphero.pink()}>Pink</Button>
-            </Menu.Item>
-
-            <Menu.Item>
-              <Button onClick={() => sphero.blue()}>Blue</Button>
-            </Menu.Item>
-            <Menu.Item>
-              <Button onClick={() => sphero.green()}>Green</Button>
-            </Menu.Item>
-            <Menu.Item>
-              <Button inverted color="red" onClick={() => sphero.red()}>
-                Red
-              </Button>{" "}
-              <Button inverted color="orange" onClick={() => sphero.orange()}>
-                Orange
-              </Button>
-            </Menu.Item>
-            <Menu.Item>
-              <Icon
-                name="chevron left"
-                onClick={() => this.handleSidebarHide1()}
-              >
-                Close menu
-              </Icon>
-            </Menu.Item>
-          </Sidebar>
-
-          <Sidebar.Pusher>
-            <Segment
-              style={{
-                backgroundColor: "#293042"
-              }}
-            >
-              <Button.Group>
-                <Button
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    right: 0
-                  }}
-                  disabled={visible}
-                  onClick={this.handleShowClick}
-                >
-                  Connect
+      <div>
+        <i className="fas fa-cogs" />
+        <Button
+          onClick={this.handleHideClick}
+          style={{
+            position: "fixed",
+            margin: 16,
+            right: 10,
+            bottom: 50
+          }}
+        >
+          Connect
+        </Button>
+        <Sidebar
+          as={Segment}
+          animation="scale down"
+          direction="bottom"
+          onHide={this.handleSidebarHide}
+          visible={this.state.visible}
+        >
+          <Grid textAlign="center">
+            <Grid.Row columns={1}>
+              <Grid.Column>
+                <Header as="h3">Interactive Panel</Header>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid columns={3} divided>
+              <Grid.Column>
+                <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+              </Grid.Column>
+              <Grid.Column>
+                <Button inverted color="red" onClick={() => sphero.red()}>
+                  Red
                 </Button>
-              </Button.Group>
-              <Header1 />
-              <Homepage />
-              <StackHome />
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-        <Footer />
+                <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+              </Grid.Column>
+              <Grid.Column>
+                <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+              </Grid.Column>
+            </Grid>
+          </Grid>
+        </Sidebar>
         <Websocket
           url="wss://emotivcortex.com:54321"
           onMessage={this.handleData}
