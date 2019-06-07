@@ -6317,6 +6317,11 @@ react-router@^5.0.1:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
+react-simple-animate@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-simple-animate/-/react-simple-animate-3.2.0.tgz#6c95db4b57b096e863169c796b45da7201e8b4bd"
+  integrity sha512-zIlfuU56/ru2NtSkDKIqqOrbCQPTYeMKdAaqOuzauvF574ML7M4EoTWkgJEivJDMWXU5NMkqRJBtunWj8tod8g==
+
 react-transition-group@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.0.1.tgz#8cb8d58763e259da465385bb83b3b41b3ecba629"
