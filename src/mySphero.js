@@ -53,6 +53,7 @@ exports.pink = () => {
 };
 exports.blue = () => {
   spheroBall.color("blue");
+  console.log("Hi Blue");
 };
 exports.red = () => {
   spheroBall.color("red");

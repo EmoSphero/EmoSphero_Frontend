@@ -1,10 +1,10 @@
 .featured_wrapper {
   margin: 0 auto;
   width: 1440px;
-  margin-top: 90px;
+  margin-top: 60px;
   height: 730px;
   overflow: hidden;
-  background-image: url("../css//images/featured.png");
+  background-image: url("../css//images/bmin.png");
 }
 .stack_wrapper {
   margin-top: 9px;
@@ -50,4 +50,43 @@
 .devicon-react-original-wordmark {
   font-size: 10rem;
   color: #212b31;
+}
+
+.herofont {
+  font-family: "Menlo";
+  font-size: 2em;
+  text-align: center;
+  padding-top: 3px;
+  font-weight: bold;
+}
+.p-tag {
+  font-family: "Menlo";
+  font-size: 2em;
+  font-weight: bold;
+}
+.container {
+  margin-left: 50px;
+}
+.featured_first {
+  position: absolute;
+  background: #26282a;
+  color: #ffffff;
+  font-size: 92px;
+  text-transform: uppercase;
+  padding: 0px 20px;
+}
+
+.featured_second {
+  position: absolute;
+  background: #26282a;
+  color: #ffffff;
+  font-size: 92px;
+  text-transform: uppercase;
+  padding: 0px 20px;
+}
+.featured_number {
+  font-size: 270px;
+  color: #ffffff;
+  transform: translate(260px, 170px);
+  position: absolute;
 }

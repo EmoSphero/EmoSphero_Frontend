@@ -188,26 +188,25 @@ export default class Menubar extends Component {
           onHide={this.handleSidebarHide}
           visible={this.state.visible}
         >
-          <Grid textAlign="center">
-            <Grid.Row columns={1}>
-              <Grid.Column>
-                <Header as="h3">Interactive Panel</Header>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid columns={3} divided>
-              <Grid.Column>
-                <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
-              </Grid.Column>
-              <Grid.Column>
-                <Button inverted color="red" onClick={() => sphero.red()}>
-                  Red
-                </Button>
-                <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
-              </Grid.Column>
-              <Grid.Column>
-                <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
-              </Grid.Column>
-            </Grid>
+          <p>Interactive Panel</p>
+
+          <Grid columns={2} padded="horizontally">
+            <Grid.Column>
+              <Button positive onClick={() => this.handleGo()}>
+                Connection
+              </Button>
+            </Grid.Column>
+            <Grid.Column>
+              <Button inverted color="red" onClick={() => sphero.red()}>
+                Red
+              </Button>
+              <Button inverted color="blue" onClick={() => sphero.blue()}>
+                Blue
+              </Button>
+              <Button inverted color="green" onClick={() => sphero.green()}>
+                Green
+              </Button>
+            </Grid.Column>
           </Grid>
         </Sidebar>
         <Websocket

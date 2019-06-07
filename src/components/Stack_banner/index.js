@@ -8,7 +8,13 @@ const StackHome = () => {
         <h1> Tech Stack </h1>
         <p> What we used to build this application</p>
         <div>
-          <Grid relaxed="very" columns={4}>
+          <Grid
+            relaxed="very"
+            columns={4}
+            style={{
+              marginLeft: "20px"
+            }}
+          >
             <Grid.Column>
               <i className="devicon-atom-original" />
             </Grid.Column>
@@ -22,7 +28,13 @@ const StackHome = () => {
               <i className="devicon-mongodb-plain" />
             </Grid.Column>
           </Grid>
-          <Grid relaxed="very" columns={4}>
+          <Grid
+            relaxed="very"
+            columns={4}
+            style={{
+              marginLeft: "20px"
+            }}
+          >
             <Grid.Column>
               <i className="devicon-html5-plain-wordmark" />
             </Grid.Column>
