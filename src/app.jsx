@@ -5,7 +5,7 @@ const sphero = require("./mySphero");
 export default class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="background">
         <SidebarExampleMultiple />
       </div>
     );

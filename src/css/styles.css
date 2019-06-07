@@ -1,0 +1,12 @@
+body {
+  background-image: url("../background.png");
+  background-color: red;
+}
+div.background {
+  background-image: url("../background.png");
+  background-color: #FFF;
+}
+div.fixMyStyle {
+  background-image: url("../background.png");
+  background-color: #FFF;
+}
